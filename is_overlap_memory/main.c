@@ -3,9 +3,9 @@
 
 int main(void)
 {
-    int nums1[5] = {1, 2, 3, 4, 5};
-    int nums2[7] = {-1, -2, 9, 6, 6, 9, 0};
-    int *nums3 = nums1 + 2;
+    const int nums1[5] = {1, 2, 3, 4, 5};
+    const int nums2[7] = {-1, -2, 9, 6, 6, 9, 0};
+    const int *const nums3 = nums1 + 2;
     const size_t length3 = 5u;
     int result;
 
