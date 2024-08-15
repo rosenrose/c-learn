@@ -1,1 +1,1 @@
-clang -std=c99 -W -Wall -pedantic-errors *.c && ./a
+clang -std=c89 -W -Wall -pedantic-errors *.c && ./a
