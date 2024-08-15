@@ -34,7 +34,7 @@ int main(void)
     }
 
     printf("%s\n", buffer);
-    printf("%016llx\n", func);
+    printf("%p\n", (void *)func);
 
     return 0;
 }
