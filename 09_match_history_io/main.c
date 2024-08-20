@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "match_history_io.h"
 
-#define MATCH_CNT (5)
 #define NUM_CHAMPS (5)
 #define HISTORY_SIZE (4096)
 

@@ -2,7 +2,7 @@
 
 void add_vec(const int *v1, const int *v2, int *out_res)
 {
-    size_t i = 0;
+    size_t i;
 
     for (i = 0; i < VECTOR_LENGTH; i++)
     {

@@ -53,7 +53,7 @@ void read_match_history(char *history)
 
     while (token != NULL)
     {
-        char name[BUFFER_LEN]; /* 충분히 크긴 한데 누군가 히스토리 속 이름을 길게 변조했을 수도 있다. 100% 안전하지 없음. */
+        char name[BUFFER_LEN]; /* 충분히 크긴 한데 누군가 히스토리 속 이름을 길게 변조했을 수도 있다. 100% 안전하지 않음. */
         double kills;
         double deaths;
         double assists;

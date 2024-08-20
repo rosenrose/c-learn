@@ -4,13 +4,10 @@
 void get_min_max(const int nums[], const size_t length, int *const out_min, int *const out_max)
 {
     size_t i;
-    int min;
-    int max;
+    int min = nums[0];
+    int max = nums[0];
 
     assert(length >= 1);
-
-    min = nums[0];
-    max = nums[0];
 
     for (i = 1; i < length; i++)
     {
