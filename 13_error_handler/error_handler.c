@@ -21,7 +21,7 @@ void log_err(const char *const msg)
 
 void default_err_handler(const char *const msg)
 {
-    time_t now = time(NULL); /* 현재 시간 */
+    const time_t now = time(NULL); /* 현재 시간 */
     struct tm local;
 
     localtime_s(&local, &now);
