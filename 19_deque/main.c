@@ -3,14 +3,15 @@
 
 enum
 {
-    MAX_CNT = 8
+    MAX_CNT = 8,
+    ARR_LEN = MAX_CNT + 1
 };
 enum
 {
     INVALID_IDX = -1
 };
 
-int s_arr[MAX_CNT];
+int s_arr[ARR_LEN];
 size_t s_arr_cnt = 0;
 size_t s_front = 0;
 size_t s_back = 0;
@@ -52,16 +53,9 @@ int main(void)
 
 void print_arr(void)
 {
-    size_t i = s_front;
+    size_t i;
 
-    if (is_empty())
-    {
-        return;
-    }
-
-    printf("%d ", s_arr[i]);
-
-    for (i = (i + 1) % MAX_CNT; i != s_back; i = (i + 1) % MAX_CNT)
+    for (i = s_front; i != s_back; i = (i + 1) % ARR_LEN)
     {
         printf("%d ", s_arr[i]);
     }
@@ -74,7 +68,7 @@ void push_back(const int num)
     assert(s_arr_cnt < MAX_CNT);
 
     s_arr[s_back] = num;
-    s_back = (s_back + 1) % MAX_CNT;
+    s_back = (s_back + 1) % ARR_LEN;
     s_arr_cnt++;
 }
 
@@ -82,7 +76,7 @@ void push_front(const int num)
 {
     assert(s_arr_cnt < MAX_CNT);
 
-    s_front = (s_front + (MAX_CNT - 1)) % MAX_CNT;
+    s_front = (s_front + MAX_CNT) % ARR_LEN;
     s_arr[s_front] = num;
     s_arr_cnt++;
 }
@@ -96,7 +90,7 @@ int pop_back(void)
 {
     assert(s_arr_cnt > 0);
 
-    s_back = (s_back + (MAX_CNT - 1)) % MAX_CNT;
+    s_back = (s_back + MAX_CNT) % ARR_LEN;
     s_arr_cnt--;
 
     return s_arr[s_back];
@@ -105,10 +99,11 @@ int pop_back(void)
 int pop_front(void)
 {
     int ret;
+
     assert(s_arr_cnt > 0);
 
     ret = s_arr[s_front];
-    s_front = (s_front + 1) % MAX_CNT;
+    s_front = (s_front + 1) % ARR_LEN;
     s_arr_cnt--;
 
     return ret;
@@ -116,30 +111,16 @@ int pop_front(void)
 
 size_t find_idx(const int num)
 {
-    size_t i = s_front;
+    size_t i;
     size_t ret = 0;
 
-    if (is_empty())
-    {
-        return INVALID_IDX;
-    }
-
-    if (s_arr[i] == num)
-    {
-        return ret;
-    }
-
-    i = (i + 1) % MAX_CNT;
-    ret++;
-
-    while (i != s_back)
+    for (i = s_front; i != s_back; i = (i + 1) % ARR_LEN)
     {
         if (s_arr[i] == num)
         {
             return ret;
         }
 
-        i = (i + 1) % MAX_CNT;
         ret++;
     }
 
