@@ -35,9 +35,7 @@ void printf_simple(const char *format, ...)
             switch (*format)
             {
             case 's':
-                str = va_arg(ap, const char *);
-
-                for (; *str != '\0'; str++)
+                for (str = va_arg(ap, const char *); *str != '\0'; str++)
                 {
                     putchar(*str);
                 }
