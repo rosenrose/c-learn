@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
 #include "hash_function.h"
@@ -37,7 +38,7 @@ int main(void)
     memset(&person, 0, sizeof(employee_t)); /* 쓰레기 값이 해시에 영향을 주면 안 되므로 구조체 변수를 모두 0으로 초기화 */
     person.age = 21;
     person.id = 18274192;
-    strcpy_s(person.name, sizeof(person.name), "Pope Kim");
+    strcpy(person.name, "Pope Kim");
 
     hash = hash_data(&person, sizeof(employee_t));
     printf("struct %4llu\n", hash);

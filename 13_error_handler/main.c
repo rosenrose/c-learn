@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include "error_handler.h"
 
@@ -29,7 +30,7 @@ int run(void)
     {
         printf("Enter numerator and denominator: ");
 
-        if (scanf_s("%d %d", &numerator, &denominator) == 2)
+        if (scanf("%d %d", &numerator, &denominator) == 2)
         {
             break;
         }

@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include "file_utils.h"
 
@@ -18,7 +19,7 @@ void copy_file(const char *const src, const char *const dst)
     FILE *dst_file = NULL;
     int ch;
 
-    fopen_s(&src_file, src, "rb");
+    src_file = fopen(src, "rb");
 
     if (src_file == NULL)
     {
@@ -26,7 +27,7 @@ void copy_file(const char *const src, const char *const dst)
         return;
     }
 
-    fopen_s(&dst_file, dst, "wb");
+    dst_file = fopen(dst, "wb");
 
     if (dst_file == NULL)
     {
@@ -49,9 +50,7 @@ void print_with_repeats(const char *const filename)
     long repeat_pos = -1;
     int is_repeating = FALSE;
     int ch;
-    FILE *file = NULL;
-
-    fopen_s(&file, filename, "r");
+    FILE *file = fopen(filename, "r");
 
     if (file == NULL)
     {

@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
 #include "buffered_print.h"
@@ -26,12 +27,12 @@ void buffered_print(const char *src)
 
         if (is_buffer_empty)
         {
-            strncpy_s(s_buffer, BUFFER_LEN, src, copy_cnt);
+            strncpy(s_buffer, src, copy_cnt);
             s_buffer[s_buffer_idx] = '\0';
         }
         else
         {
-            strncat_s(s_buffer, BUFFER_LEN, src, copy_cnt);
+            strncat(s_buffer, src, copy_cnt);
         }
 
         src += copy_cnt;

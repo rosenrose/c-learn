@@ -11,7 +11,7 @@ void print_ascii_table(void)
     const int ROWS = (CHARS_CNT + (COLS - 1)) / COLS;
 
     int row;
-    int ch;
+    int ch = MIN_ASCII;
 
     printf("Dec Hex  Char | Dec Hex  Char | Dec Hex  Char\n");
 
@@ -27,7 +27,7 @@ void print_ascii_table(void)
         ch++;
     }
 
-    for (ch = MIN_ASCII; ch <= MAX_ASCII; ch++)
+    for (; ch <= MAX_ASCII; ch++)
     {
         printf("%03d %#X %-4c | ", ch, ch, ch);
     }

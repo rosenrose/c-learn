@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
 #include "match_history_io.h"
@@ -31,7 +32,7 @@ void write_match_history(char *history, const size_t history_size,
             break;
         }
 
-        strcpy_s(history, history_size, buffer);
+        strcpy(history, buffer);
         history += written_len;
         remaining_history_size -= written_len;
     }
@@ -41,7 +42,6 @@ void read_match_history(char *history)
 {
     const char *const DELIMS = "\n";
     const char *token = NULL;
-    char *next_token = NULL;
 
     printf("%8s %7s %7s %7s %7s %6s %6s %9s\n",
            "Champ",
@@ -49,7 +49,7 @@ void read_match_history(char *history)
            "Wins", "Losses",
            "Win Ratio");
 
-    token = strtok_s(history, DELIMS, &next_token);
+    token = strtok(history, DELIMS);
 
     while (token != NULL)
     {
@@ -63,10 +63,10 @@ void read_match_history(char *history)
         double kda;
         double win_ratio;
 
-        if (sscanf_s(token, "%s %lf %lf %lf %d %d",
-                     name, BUFFER_LEN,
-                     &kills, &deaths, &assists,
-                     &wins, &losses) != 6)
+        if (sscanf(token, "%s %lf %lf %lf %d %d",
+                   name,
+                   &kills, &deaths, &assists,
+                   &wins, &losses) != 6)
         {
             continue;
         }
@@ -80,6 +80,6 @@ void read_match_history(char *history)
                wins, losses,
                win_ratio);
 
-        token = strtok_s(NULL, DELIMS, &next_token);
+        token = strtok(NULL, DELIMS);
     }
 }

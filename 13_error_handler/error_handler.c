@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <time.h>
 #include "error_handler.h"
@@ -22,10 +23,9 @@ void log_err(const char *const msg)
 void default_err_handler(const char *const msg)
 {
     const time_t now = time(NULL); /* 현재 시간 */
-    struct tm local;
+    struct tm *local = localtime(&now);
 
-    localtime_s(&local, &now);
     fprintf(stderr, "[%02d:%02d:%02d] %s\n",
-            local.tm_hour, local.tm_min, local.tm_sec,
+            local->tm_hour, local->tm_min, local->tm_sec,
             msg);
 }
